@@ -26,6 +26,11 @@ minecraft {
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
 
+            // Dependency mixins (Architectury, KubeJS, Thaumcraft 4R) ship SRG
+            // refmaps; dev runs must remap them against the MCP mapping file.
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+
             mods {
                 "${mod_id}" {
                     source sourceSets.main

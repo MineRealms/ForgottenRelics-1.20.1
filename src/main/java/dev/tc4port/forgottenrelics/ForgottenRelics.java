@@ -45,10 +45,18 @@ public final class ForgottenRelics {
         FRCreativeTabs.register(modBus);
 
         FRNetwork.register();
-        ForgottenKnowledge.init();
+        // Config values may only be read once the config is loaded, so the
+        // forgotten-knowledge trigger table is built from ModConfigEvent.
+        modBus.addListener(this::onConfigEvent);
         MinecraftForge.EVENT_BUS.register(new FRJusticeEvents());
         MinecraftForge.EVENT_BUS.register(new FRResearchCommand());
         MinecraftForge.EVENT_BUS.register(new dev.tc4port.forgottenrelics.common.FRGameplayEvents());
+    }
+
+    private void onConfigEvent(net.minecraftforge.fml.event.config.ModConfigEvent event) {
+        if (event.getConfig().getSpec() == FRConfig.SPEC) {
+            ForgottenKnowledge.init();
+        }
     }
 
     /** Kept for parity with the source-side package separations. */
