@@ -1,0 +1,6 @@
+{
+    "textures":  {
+                     "layer0":  "forgottenrelics:item/overthrower"
+                 },
+    "parent":  "minecraft:item/generated"
+}

@@ -23,6 +23,7 @@ import dev.tc4port.forgottenrelics.item.ItemMissileTome;
 import dev.tc4port.forgottenrelics.item.ItemOblivionAmulet;
 import dev.tc4port.forgottenrelics.item.ItemOblivionStone;
 import dev.tc4port.forgottenrelics.item.ItemOmegaCore;
+import dev.tc4port.forgottenrelics.item.ItemOverthrower;
 import dev.tc4port.forgottenrelics.item.ItemParadox;
 import dev.tc4port.forgottenrelics.item.ItemShinyStone;
 import dev.tc4port.forgottenrelics.item.ItemSoulTome;
@@ -148,6 +149,9 @@ public final class FRItems {
 
     public static final RegistryObject<Item> VOID_GRIMOIRE =
             REGISTRY.register("void_grimoire", () -> new ItemVoidGrimoire(new Item.Properties()));
+
+    public static final RegistryObject<Item> OVERTHROWER =
+            REGISTRY.register("overthrower", () -> new ItemOverthrower(new Item.Properties()));
 
     private FRItems() {
     }
