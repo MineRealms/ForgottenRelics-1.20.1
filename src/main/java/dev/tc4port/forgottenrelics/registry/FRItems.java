@@ -9,6 +9,7 @@ import dev.tc4port.forgottenrelics.item.ItemChaosTome;
 import dev.tc4port.forgottenrelics.item.ItemCrimsonSpell;
 import dev.tc4port.forgottenrelics.item.ItemDarkSunRing;
 import dev.tc4port.forgottenrelics.item.ItemDeificAmulet;
+import dev.tc4port.forgottenrelics.item.ItemDimensionalMirror;
 import dev.tc4port.forgottenrelics.item.ItemDiscordRing;
 import dev.tc4port.forgottenrelics.item.ItemEldritchSpell;
 import dev.tc4port.forgottenrelics.item.ItemDormantArcanum;
@@ -26,6 +27,7 @@ import dev.tc4port.forgottenrelics.item.ItemParadox;
 import dev.tc4port.forgottenrelics.item.ItemShinyStone;
 import dev.tc4port.forgottenrelics.item.ItemSuperpositionRing;
 import dev.tc4port.forgottenrelics.item.ItemTeleportationTome;
+import dev.tc4port.forgottenrelics.item.ItemTerrorCrown;
 import dev.tc4port.forgottenrelics.item.ItemThunderpeal;
 import dev.tc4port.forgottenrelics.item.ItemWastelayer;
 import dev.tc4port.forgottenrelics.item.ItemWeatherStone;
@@ -132,6 +134,12 @@ public final class FRItems {
 
     public static final RegistryObject<Item> OBELISK_DRAINER =
             REGISTRY.register("obelisk_drainer", () -> new ItemObeliskDrainer(new Item.Properties()));
+
+    public static final RegistryObject<Item> TERROR_CROWN =
+            REGISTRY.register("terror_crown", () -> new ItemTerrorCrown(new Item.Properties().durability(1000)));
+
+    public static final RegistryObject<Item> DIMENSIONAL_MIRROR =
+            REGISTRY.register("dimensional_mirror", () -> new ItemDimensionalMirror(new Item.Properties()));
 
     private FRItems() {
     }
