@@ -6,6 +6,7 @@ import dev.tc4port.forgottenrelics.registry.FRItems;
 import dev.tc4port.thaumcraft.api.aspect.VisAction;
 import dev.tc4port.thaumcraft.api.aspect.VisChannel;
 import dev.tc4port.thaumcraft.api.aspect.VisCost;
+import dev.tc4port.forgottenrelics.common.FRCasting;
 import dev.tc4port.thaumcraft.api.ThaumcraftApiHelper;
 import dev.tc4port.thaumcraft.api.item.ItemStatePlatform;
 import java.util.List;
@@ -46,7 +47,7 @@ public class ItemDormantArcanum extends CurioRelicItem {
 
         int lifetime = ItemStatePlatform.getOrDefault(stack, FRItemState.LIFETIME, 0);
         if (lifetime > 0) {
-            if (ThaumcraftApiHelper.consumeVisFromInventory(player, UPKEEP, VisAction.EXECUTE).consumed()) {
+            if (FRCasting.pay(player, UPKEEP)) {
                 ItemStatePlatform.set(stack, FRItemState.LIFETIME, lifetime - 1);
             }
         } else {

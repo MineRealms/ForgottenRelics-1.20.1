@@ -7,6 +7,7 @@ import dev.tc4port.thaumcraft.api.item.ItemStatePlatform;
 import dev.tc4port.thaumcraft.api.aspect.VisAction;
 import dev.tc4port.thaumcraft.api.aspect.VisChannel;
 import dev.tc4port.thaumcraft.api.aspect.VisCost;
+import dev.tc4port.forgottenrelics.common.FRCasting;
 import dev.tc4port.thaumcraft.api.ThaumcraftApiHelper;
 import java.util.List;
 import net.minecraft.network.chat.Component;
@@ -53,7 +54,7 @@ public class ItemDeificAmulet extends CurioRelicItem {
         if (player.getAirSupply() <= 0) {
             int cost = (int) (1000 * FRConfig.deificAmuletVisMult());
             VisCost vis = VisCost.ofCentivis(java.util.Map.of(VisChannel.AER, cost, VisChannel.AQUA, cost));
-            if (ThaumcraftApiHelper.consumeVisFromInventory(player, vis, VisAction.EXECUTE).consumed()) {
+            if (FRCasting.pay(player, vis)) {
                 player.setAirSupply(300);
             }
         }

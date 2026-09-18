@@ -269,7 +269,7 @@ public class FRGameplayEvents {
             var vis = dev.tc4port.thaumcraft.api.aspect.VisCost.ofCentivis(java.util.Map.of(
                     VisChannel.IGNIS, Math.max(1, cost),
                     VisChannel.PERDITIO, Math.max(1, cost)));
-            if (dev.tc4port.thaumcraft.api.ThaumcraftApiHelper.consumeVisFromInventory(player, vis, VisAction.EXECUTE).consumed()) {
+            if (FRCasting.pay(player, vis)) {
                 CuriosApi.getCuriosHelper().findFirstCurio(player, FRItems.OBLIVION_AMULET.get()).ifPresent(result -> {
                     ItemStack amulet = result.stack();
                     float stored = ItemStatePlatform.getOrDefault(amulet, FRItemState.STORED_DAMAGE, 0.0F);
@@ -315,8 +315,7 @@ public class FRGameplayEvents {
         if (cooldown > 0) {
             return;
         }
-        if (!dev.tc4port.thaumcraft.api.ThaumcraftApiHelper.consumeVisFromInventory(player,
-                ItemFateTome.deathPreventionCost(), VisAction.EXECUTE).consumed()) {
+        if (!FRCasting.pay(player, ItemFateTome.deathPreventionCost())) {
             return;
         }
 
