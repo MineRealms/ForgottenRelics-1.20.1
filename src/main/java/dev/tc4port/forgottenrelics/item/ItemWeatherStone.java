@@ -1,5 +1,6 @@
 package dev.tc4port.forgottenrelics.item;
 
+import dev.tc4port.forgottenrelics.common.FRCasting;
 import dev.tc4port.forgottenrelics.FRConfig;
 import dev.tc4port.forgottenrelics.common.CastingCooldowns;
 import dev.tc4port.forgottenrelics.item.base.RelicItem;
@@ -64,7 +65,7 @@ public class ItemWeatherStone extends RelicItem {
                 VisChannel.AER, cost,
                 VisChannel.TERRA, cost,
                 VisChannel.AQUA, cost));
-        if (!ThaumcraftApiHelper.consumeVisFromInventory(player, vis, VisAction.EXECUTE).consumed()) {
+        if (!FRCasting.pay(player, vis)) {
             return;
         }
 

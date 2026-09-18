@@ -1,5 +1,6 @@
 package dev.tc4port.forgottenrelics.item;
 
+import dev.tc4port.forgottenrelics.common.FRCasting;
 import dev.tc4port.forgottenrelics.FRConfig;
 import dev.tc4port.forgottenrelics.api.FRAbilities;
 import dev.tc4port.forgottenrelics.api.ForgottenGear;
@@ -94,7 +95,7 @@ public class ItemTelekinesisTome extends RelicItem implements ForgottenGear.Warp
         if (target == null || isBlacklisted(target)) {
             return;
         }
-        if (!ThaumcraftApiHelper.consumeVisFromInventory(player, holdCost(), VisAction.EXECUTE).consumed()) {
+        if (!FRCasting.pay(player, holdCost())) {
             return;
         }
 
@@ -144,13 +145,13 @@ public class ItemTelekinesisTome extends RelicItem implements ForgottenGear.Warp
         }
 
         if (player.distanceTo(target) <= 16.0F
-                && ThaumcraftApiHelper.consumeVisFromInventory(player, zapCost(), VisAction.EXECUTE).consumed()) {
+                && FRCasting.pay(player, zapCost())) {
             lightningAttack(player, target);
             CastingCooldowns.set(player, 10);
         }
 
         if (player.isShiftKeyDown()
-                && ThaumcraftApiHelper.consumeVisFromInventory(player, launchCost(), VisAction.EXECUTE).consumed()) {
+                && FRCasting.pay(player, launchCost())) {
             Vec3 look = player.getLookAngle();
             applyMotion(target, new Vec3(look.x * 3.0D, look.y * 1.5D, look.z * 3.0D));
             state.reset();

@@ -518,5 +518,6 @@
     "tc.research_name.forgottenrelics:XPTome":  "Tome of Ageless Wisdom",
     "tc.research_name.forgottenrelics:ShinyStone":  "Shiny Stone",
     "tc.research_name.forgottenrelics:NebulousCore":  "Nebulous Core",
-    "tc.research_name.forgottenrelics:EldritchSpell":  "Eldritch Spell"
+    "tc.research_name.forgottenrelics:EldritchSpell":  "Eldritch Spell",
+    "forgottenrelics.message.no_vis":  "Insufficient Vis - hold a charged wand in your inventory."
 }

@@ -1,5 +1,6 @@
 package dev.tc4port.forgottenrelics.item;
 
+import dev.tc4port.forgottenrelics.common.FRCasting;
 import dev.tc4port.forgottenrelics.FRConfig;
 import dev.tc4port.forgottenrelics.api.ForgottenGear;
 import dev.tc4port.forgottenrelics.common.CastingCooldowns;
@@ -63,7 +64,7 @@ public class ItemCrimsonSpell extends RelicItem implements ForgottenGear.Warping
             target = randomVisibleTarget(player);
         }
 
-        if (!ThaumcraftApiHelper.consumeVisFromInventory(player, castCost(), VisAction.EXECUTE).consumed()) {
+        if (!FRCasting.pay(player, castCost())) {
             return InteractionResultHolder.fail(stack);
         }
 
@@ -109,8 +110,7 @@ public class ItemCrimsonSpell extends RelicItem implements ForgottenGear.Warping
 
     private static void spawnOrb(Level level, Player player, @Nullable LivingEntity target) {
         Vec3 origin = player.getEyePosition().add(player.getLookAngle().scale(1.0D)).add(0.0D, 0.5D, 0.0D);
-        EntityCrimsonOrb orb = new EntityCrimsonOrb(FREntities.CRIMSON_ORB.get(), level, player,
-                target == null ? player : target, true);
+        EntityCrimsonOrb orb = new EntityCrimsonOrb(FREntities.CRIMSON_ORB.get(), level, player, target, true);
         orb.setPos(origin.x, origin.y, origin.z);
         orb.setDeltaMovement(player.getLookAngle().scale(0.75D));
         level.playSound(null, player.getX(), player.getY(), player.getZ(),

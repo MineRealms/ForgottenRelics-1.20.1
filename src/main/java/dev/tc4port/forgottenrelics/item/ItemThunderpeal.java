@@ -1,5 +1,6 @@
 package dev.tc4port.forgottenrelics.item;
 
+import dev.tc4port.forgottenrelics.common.FRCasting;
 import dev.tc4port.forgottenrelics.FRConfig;
 import dev.tc4port.forgottenrelics.common.CastingCooldowns;
 import dev.tc4port.forgottenrelics.entity.EntityThunderpealOrb;
@@ -48,7 +49,7 @@ public class ItemThunderpeal extends RelicItem {
         if (CastingCooldowns.isOnCooldown(player)) {
             return InteractionResultHolder.fail(stack);
         }
-        if (!ThaumcraftApiHelper.consumeVisFromInventory(player, castCost(), VisAction.EXECUTE).consumed()) {
+        if (!FRCasting.pay(player, castCost())) {
             return InteractionResultHolder.fail(stack);
         }
 

@@ -1,5 +1,6 @@
 package dev.tc4port.forgottenrelics.item;
 
+import dev.tc4port.forgottenrelics.common.FRCasting;
 import dev.tc4port.forgottenrelics.FRConfig;
 import dev.tc4port.forgottenrelics.api.ForgottenGear;
 import dev.tc4port.forgottenrelics.entity.EntityRageousMissile;
@@ -59,7 +60,7 @@ public class ItemMissileTome extends RelicItem implements ForgottenGear.Warping 
         if (remainingUseDuration == MAX_USE || remainingUseDuration % 2 != 0) {
             return;
         }
-        if (!ThaumcraftApiHelper.consumeVisFromInventory(player, shotCost(), VisAction.EXECUTE).consumed()) {
+        if (!FRCasting.pay(player, shotCost())) {
             return;
         }
 

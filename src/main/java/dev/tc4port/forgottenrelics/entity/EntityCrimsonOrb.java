@@ -46,13 +46,13 @@ public class EntityCrimsonOrb extends Projectile implements IEntityAdditionalSpa
         this.noPhysics = true;
     }
 
-    public EntityCrimsonOrb(EntityType<? extends EntityCrimsonOrb> type, Level level, LivingEntity caster, LivingEntity target, boolean red) {
+    public EntityCrimsonOrb(EntityType<? extends EntityCrimsonOrb> type, Level level, LivingEntity caster, @Nullable LivingEntity target, boolean red) {
         this(type, level);
         this.setOwner(caster);
         this.caster = caster;
         this.casterId = caster.getId();
         this.target = target;
-        this.targetId = target.getId();
+        this.targetId = target == null ? -1 : target.getId();
         this.red = red;
     }
 

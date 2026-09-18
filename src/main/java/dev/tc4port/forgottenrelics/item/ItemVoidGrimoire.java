@@ -1,5 +1,6 @@
 package dev.tc4port.forgottenrelics.item;
 
+import dev.tc4port.forgottenrelics.common.FRCasting;
 import dev.tc4port.forgottenrelics.FRConfig;
 import dev.tc4port.forgottenrelics.api.ForgottenGear;
 import dev.tc4port.forgottenrelics.common.CastingCooldowns;
@@ -91,7 +92,7 @@ public class ItemVoidGrimoire extends RelicItem implements ForgottenGear.Warping
             player.stopUsingItem();
             return;
         }
-        if (!ThaumcraftApiHelper.consumeVisFromInventory(player, channelCost(), VisAction.EXECUTE).consumed()) {
+        if (!FRCasting.pay(player, channelCost())) {
             player.stopUsingItem();
             return;
         }

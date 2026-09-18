@@ -1,5 +1,6 @@
 package dev.tc4port.forgottenrelics.item;
 
+import dev.tc4port.forgottenrelics.common.FRCasting;
 import dev.tc4port.forgottenrelics.FRConfig;
 import dev.tc4port.forgottenrelics.api.ForgottenGear;
 import dev.tc4port.forgottenrelics.common.CastingCooldowns;
@@ -50,7 +51,7 @@ public class ItemEldritchSpell extends RelicItem implements ForgottenGear.Warpin
         if (CastingCooldowns.isOnCooldown(player)) {
             return InteractionResultHolder.fail(stack);
         }
-        if (!ThaumcraftApiHelper.consumeVisFromInventory(player, castCost(), VisAction.EXECUTE).consumed()) {
+        if (!FRCasting.pay(player, castCost())) {
             return InteractionResultHolder.fail(stack);
         }
 

@@ -1,5 +1,6 @@
 package dev.tc4port.forgottenrelics.item;
 
+import dev.tc4port.forgottenrelics.common.FRCasting;
 import dev.tc4port.forgottenrelics.FRConfig;
 import dev.tc4port.forgottenrelics.ForgottenRelics;
 import dev.tc4port.forgottenrelics.api.ForgottenGear;
@@ -91,7 +92,7 @@ public class ItemOverthrower extends RelicItem implements ForgottenGear.Warping 
 
         LivingEntity target = TARGETS.get(player.getUUID());
         if (target == null || !target.isAlive()
-                || !ThaumcraftApiHelper.consumeVisFromInventory(player, channelCost(), VisAction.EXECUTE).consumed()) {
+                || !FRCasting.pay(player, channelCost())) {
             player.stopUsingItem();
             return;
         }

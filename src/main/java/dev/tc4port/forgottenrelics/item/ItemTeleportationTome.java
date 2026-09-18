@@ -1,5 +1,6 @@
 package dev.tc4port.forgottenrelics.item;
 
+import dev.tc4port.forgottenrelics.common.FRCasting;
 import dev.tc4port.forgottenrelics.FRConfig;
 import dev.tc4port.forgottenrelics.api.FRAbilities;
 import dev.tc4port.forgottenrelics.api.ForgottenGear;
@@ -88,7 +89,7 @@ public class ItemTeleportationTome extends RelicItem implements ForgottenGear.Wa
     }
 
     private boolean blinkForward(ServerPlayer player, ItemStack stack) {
-        if (!ThaumcraftApiHelper.consumeVisFromInventory(player, castCost(), VisAction.EXECUTE).consumed()) {
+        if (!FRCasting.pay(player, castCost())) {
             return false;
         }
         Vec3 from = player.position();
@@ -100,7 +101,7 @@ public class ItemTeleportationTome extends RelicItem implements ForgottenGear.Wa
     }
 
     private boolean swapWith(ServerPlayer player, Entity target, ItemStack stack) {
-        if (!ThaumcraftApiHelper.consumeVisFromInventory(player, castCost(), VisAction.EXECUTE).consumed()) {
+        if (!FRCasting.pay(player, castCost())) {
             return false;
         }
         Vec3 playerPos = player.position();
@@ -131,7 +132,7 @@ public class ItemTeleportationTome extends RelicItem implements ForgottenGear.Wa
         if (destination == null) {
             return false;
         }
-        if (!ThaumcraftApiHelper.consumeVisFromInventory(player, castCost(), VisAction.EXECUTE).consumed()) {
+        if (!FRCasting.pay(player, castCost())) {
             return false;
         }
         Vec3 from = player.position();

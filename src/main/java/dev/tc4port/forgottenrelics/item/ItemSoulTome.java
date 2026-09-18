@@ -1,5 +1,6 @@
 package dev.tc4port.forgottenrelics.item;
 
+import dev.tc4port.forgottenrelics.common.FRCasting;
 import dev.tc4port.forgottenrelics.FRConfig;
 import dev.tc4port.forgottenrelics.api.ForgottenGear;
 import dev.tc4port.forgottenrelics.entity.EntitySoulEnergy;
@@ -84,7 +85,7 @@ public class ItemSoulTome extends RelicItem implements ForgottenGear.Warping, Fo
             if (victim.distanceTo(player) > 3.0F) {
                 continue;
             }
-            if (!ThaumcraftApiHelper.consumeVisFromInventory(player, zapCost(), VisAction.EXECUTE).consumed()) {
+            if (!FRCasting.pay(player, zapCost())) {
                 continue;
             }
             Vec3 push = victim.position().subtract(player.position()).normalize().scale(3.0D);
@@ -106,7 +107,7 @@ public class ItemSoulTome extends RelicItem implements ForgottenGear.Warping, Fo
 
         // Soul drain pulse.
         if (remainingUseDuration % 4 == 0
-                && ThaumcraftApiHelper.consumeVisFromInventory(player, pulseCost(), VisAction.EXECUTE).consumed()) {
+                && FRCasting.pay(player, pulseCost())) {
             if (!nearby.isEmpty()) {
                 LivingEntity victim = nearby.get((int) (Math.random() * nearby.size()));
                 float soulDamage = victim.getMaxHealth() / (float) FRConfig.soulTomeDivisor();

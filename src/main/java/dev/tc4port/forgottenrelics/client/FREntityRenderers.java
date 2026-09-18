@@ -25,7 +25,7 @@ public final class FREntityRenderers {
         event.registerEntityRenderer(FREntities.DARK_MATTER_ORB.get(),
                 context -> new SimpleItemEntityRenderer<>(context, new ItemStack(Items.ENDER_EYE), 0.9F, true));
         event.registerEntityRenderer(FREntities.CRIMSON_ORB.get(),
-                context -> new SimpleItemEntityRenderer<>(context, new ItemStack(Items.MAGMA_CREAM), 0.8F, true));
+                context -> new SimpleItemEntityRenderer<>(context, new ItemStack(Items.FIRE_CHARGE), 1.1F, true));
         event.registerEntityRenderer(FREntities.CHAOTIC_ORB.get(),
                 context -> new SimpleItemEntityRenderer<>(context, new ItemStack(Items.ENDER_PEARL), 0.8F, true));
         event.registerEntityRenderer(FREntities.LUNAR_FLARE.get(),
