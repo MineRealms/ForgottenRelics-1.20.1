@@ -1,0 +1,6 @@
+{
+    "textures":  {
+                     "layer0":  "forgottenrelics:item/eldritch_spell"
+                 },
+    "parent":  "minecraft:item/generated"
+}

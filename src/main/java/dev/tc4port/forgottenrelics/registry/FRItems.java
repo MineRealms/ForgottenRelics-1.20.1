@@ -5,14 +5,17 @@ import dev.tc4port.forgottenrelics.item.ItemAdvancedMiningCharm;
 import dev.tc4port.forgottenrelics.item.ItemAncientAegis;
 import dev.tc4port.forgottenrelics.item.ItemArcanum;
 import dev.tc4port.forgottenrelics.item.ItemChaosCore;
+import dev.tc4port.forgottenrelics.item.ItemChaosTome;
 import dev.tc4port.forgottenrelics.item.ItemCrimsonSpell;
 import dev.tc4port.forgottenrelics.item.ItemDarkSunRing;
 import dev.tc4port.forgottenrelics.item.ItemDeificAmulet;
 import dev.tc4port.forgottenrelics.item.ItemDiscordRing;
+import dev.tc4port.forgottenrelics.item.ItemEldritchSpell;
 import dev.tc4port.forgottenrelics.item.ItemDormantArcanum;
 import dev.tc4port.forgottenrelics.item.ItemFalseJustice;
 import dev.tc4port.forgottenrelics.item.ItemFateTome;
 import dev.tc4port.forgottenrelics.item.ItemGhastlySkull;
+import dev.tc4port.forgottenrelics.item.ItemLunarFlares;
 import dev.tc4port.forgottenrelics.item.ItemMiningCharm;
 import dev.tc4port.forgottenrelics.item.ItemMissileTome;
 import dev.tc4port.forgottenrelics.item.ItemOblivionAmulet;
@@ -112,6 +115,15 @@ public final class FRItems {
 
     public static final RegistryObject<Item> CRIMSON_SPELL =
             REGISTRY.register("crimson_spell", () -> new ItemCrimsonSpell(new Item.Properties()));
+
+    public static final RegistryObject<Item> ELDRITCH_SPELL =
+            REGISTRY.register("eldritch_spell", () -> new ItemEldritchSpell(new Item.Properties()));
+
+    public static final RegistryObject<Item> LUNAR_FLARES =
+            REGISTRY.register("lunar_flares", () -> new ItemLunarFlares(new Item.Properties()));
+
+    public static final RegistryObject<Item> CHAOS_TOME =
+            REGISTRY.register("chaos_tome", () -> new ItemChaosTome(new Item.Properties()));
 
     private FRItems() {
     }

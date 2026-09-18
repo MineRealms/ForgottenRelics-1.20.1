@@ -1,0 +1,6 @@
+{
+    "textures":  {
+                     "layer0":  "forgottenrelics:item/lunar_flares"
+                 },
+    "parent":  "minecraft:item/generated"
+}
