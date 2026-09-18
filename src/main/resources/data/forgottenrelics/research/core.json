@@ -2,8 +2,8 @@
     "categories":  [
                        {
                            "key":  "forgottenrelics:relics",
-                           "icon":  "forgottenrelics:textures/misc/forgotten.png",
-                           "background":  "forgottenrelics:textures/misc/runecircle.png",
+                           "icon":  "forgottenrelics:textures/item/apotheosis.png",
+                           "background":  "thaumcraft:textures/gui/gui_researchback.png",
                            "sort_order":  1100
                        }
                    ],

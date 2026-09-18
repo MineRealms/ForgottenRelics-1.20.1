@@ -27,6 +27,22 @@ public class CurioRelicItem extends RelicItem implements ICurioItem {
         return true;
     }
 
+    /**
+     * Source parity: the 1.7.10 {@code ItemBaubleBase} equipped its bauble on
+     * right click. Curios only offers that behaviour when this returns true.
+     */
+    @Override
+    public boolean canEquipFromUse(SlotContext slotContext, ItemStack stack) {
+        return true;
+    }
+
+    @Override
+    public void onEquipFromUse(SlotContext slotContext, ItemStack stack) {
+        if (slotContext.entity() instanceof Player player && !player.level().isClientSide()) {
+            this.onEquippedOrLoadedIntoWorld(stack, player);
+        }
+    }
+
     @Override
     public boolean canUnequip(SlotContext slotContext, ItemStack stack) {
         return true;
