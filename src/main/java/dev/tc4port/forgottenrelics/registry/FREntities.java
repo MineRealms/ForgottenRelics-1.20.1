@@ -1,6 +1,7 @@
 package dev.tc4port.forgottenrelics.registry;
 
 import dev.tc4port.forgottenrelics.ForgottenRelics;
+import dev.tc4port.forgottenrelics.entity.EntityBabylonWeaponSS;
 import dev.tc4port.forgottenrelics.entity.EntityChaoticOrb;
 import dev.tc4port.forgottenrelics.entity.EntityCrimsonOrb;
 import dev.tc4port.forgottenrelics.entity.EntityDarkMatterOrb;
@@ -88,6 +89,14 @@ public final class FREntities {
                     .clientTrackingRange(8)
                     .updateInterval(2)
                     .build(ForgottenRelics.id("thunderpeal_orb").toString()));
+
+    public static final RegistryObject<EntityType<EntityBabylonWeaponSS>> BABYLON_WEAPON =
+            REGISTRY.register("babylon_weapon", () -> EntityType.Builder
+                    .<EntityBabylonWeaponSS>of(EntityBabylonWeaponSS::new, MobCategory.MISC)
+                    .sized(0.5F, 0.5F)
+                    .clientTrackingRange(10)
+                    .updateInterval(2)
+                    .build(ForgottenRelics.id("babylon_weapon").toString()));
 
     private FREntities() {
     }

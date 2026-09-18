@@ -1,0 +1,6 @@
+{
+    "textures":  {
+                     "layer0":  "forgottenrelics:item/apotheosis"
+                 },
+    "parent":  "minecraft:item/generated"
+}

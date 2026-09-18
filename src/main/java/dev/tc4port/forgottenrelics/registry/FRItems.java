@@ -3,6 +3,7 @@ package dev.tc4port.forgottenrelics.registry;
 import dev.tc4port.forgottenrelics.ForgottenRelics;
 import dev.tc4port.forgottenrelics.item.ItemAdvancedMiningCharm;
 import dev.tc4port.forgottenrelics.item.ItemAncientAegis;
+import dev.tc4port.forgottenrelics.item.ItemApotheosis;
 import dev.tc4port.forgottenrelics.item.ItemArcanum;
 import dev.tc4port.forgottenrelics.item.ItemChaosCore;
 import dev.tc4port.forgottenrelics.item.ItemChaosTome;
@@ -152,6 +153,9 @@ public final class FRItems {
 
     public static final RegistryObject<Item> OVERTHROWER =
             REGISTRY.register("overthrower", () -> new ItemOverthrower(new Item.Properties()));
+
+    public static final RegistryObject<Item> APOTHEOSIS =
+            REGISTRY.register("apotheosis", () -> new ItemApotheosis(new Item.Properties()));
 
     private FRItems() {
     }
