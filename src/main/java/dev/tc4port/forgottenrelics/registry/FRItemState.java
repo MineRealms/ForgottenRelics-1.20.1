@@ -35,10 +35,18 @@ public final class FRItemState {
     public static final ItemStateKey<Integer> MODE = new ItemStateKey<>(
             ForgottenRelics.id("mode"), Codec.INT);
 
+    /** Remaining lifetime of a Dormant Nebulous Core (source {@code ILifetime}). */
+    public static final ItemStateKey<Integer> LIFETIME = new ItemStateKey<>(
+            ForgottenRelics.id("lifetime"), Codec.INT);
+
+    /** Motionless-charge state of the Shiny Stone. */
+    public static final ItemStateKey<dev.tc4port.forgottenrelics.data.ShinyStoneState> SHINY_STONE = new ItemStateKey<>(
+            ForgottenRelics.id("shiny_stone"), dev.tc4port.forgottenrelics.data.ShinyStoneState.CODEC);
+
     private FRItemState() {
     }
 
     public static void register(Object bus) {
-        ItemStatePlatform.register(bus, java.util.List.of(SUPERSOLID, COOLDOWN, FATE_ID, STORED_DAMAGE, MODE));
+        ItemStatePlatform.register(bus, java.util.List.of(SUPERSOLID, COOLDOWN, FATE_ID, STORED_DAMAGE, MODE, LIFETIME, SHINY_STONE));
     }
 }

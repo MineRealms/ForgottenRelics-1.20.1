@@ -1,0 +1,6 @@
+{
+    "textures":  {
+                     "layer0":  "forgottenrelics:item/dormant_arcanum"
+                 },
+    "parent":  "minecraft:item/generated"
+}

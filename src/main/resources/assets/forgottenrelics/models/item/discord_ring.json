@@ -1,0 +1,6 @@
+{
+    "textures":  {
+                     "layer0":  "forgottenrelics:item/discord_ring"
+                 },
+    "parent":  "minecraft:item/generated"
+}
