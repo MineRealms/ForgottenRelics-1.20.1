@@ -5,6 +5,7 @@ import dev.tc4port.forgottenrelics.common.FRJusticeEvents;
 import dev.tc4port.forgottenrelics.common.FRResearchCommand;
 import dev.tc4port.forgottenrelics.network.FRNetwork;
 import dev.tc4port.forgottenrelics.registry.FRCreativeTabs;
+import dev.tc4port.forgottenrelics.registry.FREntities;
 import dev.tc4port.forgottenrelics.registry.FRItemState;
 import dev.tc4port.forgottenrelics.registry.FRItems;
 import dev.tc4port.forgottenrelics.registry.FRRecipes;
@@ -39,6 +40,7 @@ public final class ForgottenRelics {
 
         FRItemState.register(modBus);
         FRItems.register(modBus);
+        FREntities.register(modBus);
         FRRecipes.register(modBus);
         FRCreativeTabs.register(modBus);
 
