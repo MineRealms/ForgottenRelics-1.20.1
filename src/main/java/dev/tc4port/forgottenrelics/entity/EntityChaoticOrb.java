@@ -171,7 +171,7 @@ public class EntityChaoticOrb extends Projectile implements IEntityAdditionalSpa
 
         float power = 1.0F + (float) Math.random() * 6.0F;
         this.level().explode(this, this.getX(), this.getY(), this.getZ(), power,
-                Level.ExplosionInteraction.NONE);
+                Level.ExplosionInteraction.MOB);
 
         if (!this.seeker && this.random.nextInt(100) <= (portal ? 10 : 1)) {
             specialEffect();

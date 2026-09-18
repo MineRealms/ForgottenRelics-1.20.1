@@ -36,7 +36,7 @@ public class RelicItem extends Item {
 
     @Override
     public String getDescriptionId() {
-        return "item." + this.legacyName;
+        return "item." + this.legacyName + ".name";
     }
 
     @Override

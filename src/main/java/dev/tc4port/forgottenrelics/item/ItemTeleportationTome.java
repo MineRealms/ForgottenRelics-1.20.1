@@ -113,8 +113,8 @@ public class ItemTeleportationTome extends RelicItem implements ForgottenGear.Wa
     }
 
     private boolean jumpToBlock(ServerPlayer player, ItemStack stack) {
-        BlockHitResult hit = (BlockHitResult) player.pick(RANGE, 0.0F, false);
-        if (hit.getType() == HitResult.Type.MISS) {
+        net.minecraft.world.phys.HitResult picked = player.pick(RANGE, 0.0F, false);
+        if (!(picked instanceof BlockHitResult hit) || hit.getType() == HitResult.Type.MISS) {
             return false;
         }
         BlockPos base = hit.getBlockPos();

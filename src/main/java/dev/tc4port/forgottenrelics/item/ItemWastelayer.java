@@ -26,7 +26,7 @@ public class ItemWastelayer extends SwordItem implements ForgottenGear.Warping, 
 
     @Override
     public String getDescriptionId() {
-        return "item.ItemWastelayer";
+        return "item.ItemWastelayer.name";
     }
 
     @Override

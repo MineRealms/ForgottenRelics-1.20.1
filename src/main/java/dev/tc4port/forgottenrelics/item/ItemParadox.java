@@ -26,7 +26,7 @@ public class ItemParadox extends SwordItem implements ForgottenGear.Warping, For
 
     @Override
     public String getDescriptionId() {
-        return "item.ItemParadox";
+        return "item.ItemParadox.name";
     }
 
     @Override

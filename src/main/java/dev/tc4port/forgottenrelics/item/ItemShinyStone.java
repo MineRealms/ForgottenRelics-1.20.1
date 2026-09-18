@@ -3,16 +3,18 @@ package dev.tc4port.forgottenrelics.item;
 import dev.tc4port.forgottenrelics.FRConfig;
 import dev.tc4port.forgottenrelics.data.ShinyStoneState;
 import dev.tc4port.forgottenrelics.item.base.CurioRelicItem;
+import dev.tc4port.forgottenrelics.entity.EntityShinyEnergy;
+import dev.tc4port.forgottenrelics.registry.FREntities;
 import dev.tc4port.forgottenrelics.registry.FRItemState;
 import dev.tc4port.thaumcraft.api.item.ItemStatePlatform;
 import java.util.List;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 
 /**
  * Shiny Stone. Standing perfectly still charges the stone; the longer the
@@ -54,10 +56,17 @@ public class ItemShinyStone extends CurioRelicItem {
                     particles = 0;
                 }
                 state = new ShinyStoneState(charge + 4, healRate, state.lastX(), state.lastY(), state.lastZ());
-                if (particles > 0 && player.level() instanceof ServerLevel serverLevel) {
-                    serverLevel.sendParticles(ParticleTypes.ELECTRIC_SPARK,
-                            player.getX(), player.getY() + 1.0D, player.getZ(),
-                            particles * 4, 0.6D, 0.8D, 0.6D, 0.02D);
+                if (player.level() instanceof ServerLevel serverLevel) {
+                    // Source parity: one mote per unused particle tier, homing back onto the wearer.
+                    for (int mote = particles; mote <= 3; mote++) {
+                        EntityShinyEnergy energy = new EntityShinyEnergy(FREntities.SHINY_ENERGY.get(), serverLevel, player, player,
+                                player.getX(), player.getY(), player.getZ());
+                        Vec3 offset = new Vec3((Math.random() - 0.5D) * 3.0D, (Math.random() - 0.5D) * 3.0D, (Math.random() - 0.5D) * 3.0D);
+                        Vec3 position = player.position().add(offset);
+                        energy.setPos(position.x, position.y + 0.5D, position.z);
+                        energy.setDeltaMovement(offset.normalize().scale(-0.1D));
+                        serverLevel.addFreshEntity(energy);
+                    }
                 }
             } else {
                 state = state.withCharge(0).withHealRate(0);

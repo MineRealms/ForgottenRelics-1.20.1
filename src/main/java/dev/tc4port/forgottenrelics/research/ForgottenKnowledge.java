@@ -32,10 +32,47 @@ public final class ForgottenKnowledge {
 
     public static void init() {
         TRIGGERS.clear();
+        seedDefaults();
         if (FRConfig.justiceOverridingEnabled()) {
             for (String override : FRConfig.justiceHandlerOverrides()) {
                 parseOverride(override);
             }
+        }
+    }
+
+    /**
+     * Built-in triggers from the source {@code RelicsResearchRegistry}, with
+     * 1.7.10 item identities translated to their 1.20.1 counterparts. Unknown
+     * ids are logged and skipped by {@link #parseStack}.
+     */
+    private static void seedDefaults() {
+        seed("forgottenrelics:AdvancedMiningCharm", "botania:gaia_ingot", "forgottenrelics:mining_charm");
+        seed("forgottenrelics:AncientAegis", "botania:dragonstone");
+        seed("forgottenrelics:DiscordTome", "botania:elementium_ingot");
+        seed("forgottenrelics:FateTome", "botania:gaia_ingot", "botania:dragonstone");
+        seed("forgottenrelics:TelekinesisTome", "botania:gaia_ingot", "botania:gravity_rod", "thaumcraft:void_seed");
+        seed("forgottenrelics:EldritchSpell", "botania:gaia_ingot");
+        seed("forgottenrelics:CrimsonSpell", "thaumcraft:crimson_rites");
+        seed("forgottenrelics:ChaosTome", "botania:gaia_ingot");
+        seed("forgottenrelics:NuclearFury", "botania:missile_rod", "botania:terrasteel_ingot", "thaumcraft:alumentum");
+        seed("forgottenrelics:SoulTome", "botania:gaia_ingot", "thaumcraft:alumentum", "minecraft:ender_eye");
+        seed("forgottenrelics:LunarFlares", "botania:terrasteel_ingot", "botania:ender_air");
+        seed("forgottenrelics:ChaosCore", "botania:pixie_dust", "botania:dragonstone", "thaumcraft:void_ingot");
+        seed("forgottenrelics:TheParadox", "forgottenrelics:chaos_core");
+        seed("forgottenrelics:DarkSunRing", "minecraft:blaze_rod", "botania:gaia_ingot");
+        seed("forgottenrelics:DeificAmulet", "botania:gaia_ingot", "botania:pixie_dust");
+        seed("forgottenrelics:ShinyStone", "minecraft:enchanted_golden_apple", "botania:dragonstone", "botania:gaia_ingot");
+        seed("forgottenrelics:TerrorCrown", "minecraft:nether_star");
+        seed("forgottenrelics:OblivionAmulet", "minecraft:nether_star", "thaumcraft:void_ingot");
+        seed("forgottenrelics:NebulousCore", "forgottenrelics:superposition_ring", "thaumcraft:thaumium_ingot");
+        seed("forgottenrelics:Overthrower", "minecraft:nether_wart");
+        seed("forgottenrelics:VoidGrimoire", "thaumcraft:void_seed", "minecraft:bedrock");
+        seed("forgottenrelics:PechFocus", "minecraft:ghast_tear", "minecraft:fermented_spider_eye", "minecraft:sugar", "minecraft:blaze_powder", "minecraft:nether_wart");
+    }
+
+    private static void seed(String researchKey, String... itemIds) {
+        for (String itemId : itemIds) {
+            parseStack(itemId).ifPresent(stack -> addTrigger(researchKey, stack));
         }
     }
 

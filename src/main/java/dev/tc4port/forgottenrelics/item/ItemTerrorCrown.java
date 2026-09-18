@@ -41,7 +41,7 @@ public class ItemTerrorCrown extends ArmorItem implements ForgottenGear.Warping,
 
     @Override
     public String getDescriptionId() {
-        return "item.ItemTerrorCrown";
+        return "item.ItemTerrorCrown.name";
     }
 
     @Override

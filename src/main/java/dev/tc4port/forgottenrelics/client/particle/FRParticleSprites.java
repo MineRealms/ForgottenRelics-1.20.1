@@ -11,29 +11,16 @@ final class FRParticleSprites {
     static final ResourceLocation WISP_LARGE = ResourceLocation.fromNamespaceAndPath("forgottenrelics", "particle/wisp_large");
     static final ResourceLocation SPARKLE_SHEET = ResourceLocation.fromNamespaceAndPath("forgottenrelics", "particle/sparkle_sheet");
 
-    private static TextureAtlasSprite wisp;
-    private static TextureAtlasSprite sparkle;
-
     private FRParticleSprites() {
     }
 
     static TextureAtlasSprite wisp() {
-        if (wisp == null) {
-            wisp = atlas().apply(WISP_LARGE);
-        }
-        return wisp;
+        // Resolved per use: sprites are replaced when resource packs reload.
+        return atlas().apply(WISP_LARGE);
     }
 
     static TextureAtlasSprite sparkle() {
-        if (sparkle == null) {
-            sparkle = atlas().apply(SPARKLE_SHEET);
-        }
-        return sparkle;
-    }
-
-    static void invalidate() {
-        wisp = null;
-        sparkle = null;
+        return atlas().apply(SPARKLE_SHEET);
     }
 
     private static java.util.function.Function<ResourceLocation, TextureAtlasSprite> atlas() {
