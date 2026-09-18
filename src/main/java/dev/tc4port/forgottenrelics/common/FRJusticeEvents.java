@@ -17,6 +17,7 @@ public class FRJusticeEvents {
         if (!(event.player instanceof ServerPlayer player)) {
             return;
         }
+        CastingCooldowns.tick(player);
         if (player.tickCount % FRConfig.researchInspectionFrequency() != 0) {
             return;
         }

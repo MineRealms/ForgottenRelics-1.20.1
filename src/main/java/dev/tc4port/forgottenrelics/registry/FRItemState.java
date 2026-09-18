@@ -43,10 +43,24 @@ public final class FRItemState {
     public static final ItemStateKey<dev.tc4port.forgottenrelics.data.ShinyStoneState> SHINY_STONE = new ItemStateKey<>(
             ForgottenRelics.id("shiny_stone"), dev.tc4port.forgottenrelics.data.ShinyStoneState.CODEC);
 
+    /** XP Tome toggle (source {@code IsActive}). */
+    public static final ItemStateKey<Boolean> ACTIVE = new ItemStateKey<>(
+            ForgottenRelics.id("active"), Codec.BOOL);
+
+    /** XP Tome mode: absorbance vs extraction (source {@code AbsorptionMode}). */
+    public static final ItemStateKey<Boolean> ABSORPTION = new ItemStateKey<>(
+            ForgottenRelics.id("absorption"), Codec.BOOL);
+
+    /** XP Tome stored experience points (source {@code XPStored}). */
+    public static final ItemStateKey<Integer> XP_STORED = new ItemStateKey<>(
+            ForgottenRelics.id("xp_stored"), Codec.INT);
+
     private FRItemState() {
     }
 
     public static void register(Object bus) {
-        ItemStatePlatform.register(bus, java.util.List.of(SUPERSOLID, COOLDOWN, FATE_ID, STORED_DAMAGE, MODE, LIFETIME, SHINY_STONE));
+        ItemStatePlatform.register(bus, java.util.List.of(
+                SUPERSOLID, COOLDOWN, FATE_ID, STORED_DAMAGE, MODE, LIFETIME, SHINY_STONE,
+                ACTIVE, ABSORPTION, XP_STORED));
     }
 }

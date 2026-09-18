@@ -20,6 +20,8 @@ import dev.tc4port.forgottenrelics.item.ItemParadox;
 import dev.tc4port.forgottenrelics.item.ItemShinyStone;
 import dev.tc4port.forgottenrelics.item.ItemSuperpositionRing;
 import dev.tc4port.forgottenrelics.item.ItemWastelayer;
+import dev.tc4port.forgottenrelics.item.ItemWeatherStone;
+import dev.tc4port.forgottenrelics.item.ItemXPTome;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -92,6 +94,12 @@ public final class FRItems {
 
     public static final RegistryObject<Item> DISCORD_RING =
             REGISTRY.register("discord_ring", () -> new ItemDiscordRing(new Item.Properties()));
+
+    public static final RegistryObject<Item> XP_TOME =
+            REGISTRY.register("xp_tome", () -> new ItemXPTome(new Item.Properties()));
+
+    public static final RegistryObject<Item> WEATHER_STONE =
+            REGISTRY.register("weather_stone", () -> new ItemWeatherStone(new Item.Properties()));
 
     private FRItems() {
     }
