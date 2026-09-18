@@ -1,8 +1,10 @@
 package dev.tc4port.forgottenrelics.registry;
 
 import dev.tc4port.forgottenrelics.ForgottenRelics;
+import dev.tc4port.forgottenrelics.entity.EntityChaoticOrb;
 import dev.tc4port.forgottenrelics.entity.EntityCrimsonOrb;
 import dev.tc4port.forgottenrelics.entity.EntityDarkMatterOrb;
+import dev.tc4port.forgottenrelics.entity.EntityLunarFlare;
 import dev.tc4port.forgottenrelics.entity.EntityShinyEnergy;
 import dev.tc4port.forgottenrelics.entity.EntitySoulEnergy;
 import net.minecraft.world.entity.EntityType;
@@ -52,6 +54,22 @@ public final class FREntities {
                     .clientTrackingRange(8)
                     .updateInterval(2)
                     .build(ForgottenRelics.id("crimson_orb").toString()));
+
+    public static final RegistryObject<EntityType<EntityChaoticOrb>> CHAOTIC_ORB =
+            REGISTRY.register("chaotic_orb", () -> EntityType.Builder
+                    .<EntityChaoticOrb>of(EntityChaoticOrb::new, MobCategory.MISC)
+                    .sized(0.3F, 0.3F)
+                    .clientTrackingRange(8)
+                    .updateInterval(2)
+                    .build(ForgottenRelics.id("chaotic_orb").toString()));
+
+    public static final RegistryObject<EntityType<EntityLunarFlare>> LUNAR_FLARE =
+            REGISTRY.register("lunar_flare", () -> EntityType.Builder
+                    .<EntityLunarFlare>of(EntityLunarFlare::new, MobCategory.MISC)
+                    .sized(0.2F, 0.2F)
+                    .clientTrackingRange(10)
+                    .updateInterval(2)
+                    .build(ForgottenRelics.id("lunar_flare").toString()));
 
     private FREntities() {
     }
