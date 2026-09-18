@@ -29,6 +29,7 @@ import dev.tc4port.forgottenrelics.item.ItemParadox;
 import dev.tc4port.forgottenrelics.item.ItemShinyStone;
 import dev.tc4port.forgottenrelics.item.ItemSoulTome;
 import dev.tc4port.forgottenrelics.item.ItemSuperpositionRing;
+import dev.tc4port.forgottenrelics.item.ItemTelekinesisTome;
 import dev.tc4port.forgottenrelics.item.ItemTeleportationTome;
 import dev.tc4port.forgottenrelics.item.ItemTerrorCrown;
 import dev.tc4port.forgottenrelics.item.ItemThunderpeal;
@@ -156,6 +157,9 @@ public final class FRItems {
 
     public static final RegistryObject<Item> APOTHEOSIS =
             REGISTRY.register("apotheosis", () -> new ItemApotheosis(new Item.Properties()));
+
+    public static final RegistryObject<Item> TELEKINESIS_TOME =
+            REGISTRY.register("telekinesis_tome", () -> new ItemTelekinesisTome(new Item.Properties()));
 
     private FRItems() {
     }

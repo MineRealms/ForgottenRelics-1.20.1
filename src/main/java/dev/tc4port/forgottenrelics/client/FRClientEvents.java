@@ -2,6 +2,9 @@ package dev.tc4port.forgottenrelics.client;
 
 import dev.tc4port.forgottenrelics.ForgottenRelics;
 import dev.tc4port.forgottenrelics.network.DiscordKeybindPayload;
+import dev.tc4port.forgottenrelics.network.TelekinesisAttackPayload;
+import dev.tc4port.forgottenrelics.network.TelekinesisUsePayload;
+import dev.tc4port.forgottenrelics.registry.FRItems;
 import dev.tc4port.forgottenrelics.network.FRNetwork;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
@@ -27,6 +30,15 @@ public final class FRClientEvents {
         }
         while (FRClientKeys.DISCORD_RING.consumeClick()) {
             FRNetwork.sendToServer(new DiscordKeybindPayload(true));
+        }
+
+        if (minecraft.player.getMainHandItem().is(FRItems.TELEKINESIS_TOME.get())) {
+            if (minecraft.options.keyUse.isDown()) {
+                FRNetwork.sendToServer(new TelekinesisUsePayload());
+            }
+            while (minecraft.options.keyAttack.consumeClick()) {
+                FRNetwork.sendToServer(new TelekinesisAttackPayload(true));
+            }
         }
     }
 }
