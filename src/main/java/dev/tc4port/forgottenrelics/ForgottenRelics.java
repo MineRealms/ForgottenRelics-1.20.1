@@ -3,6 +3,7 @@ package dev.tc4port.forgottenrelics;
 import com.mojang.logging.LogUtils;
 import dev.tc4port.forgottenrelics.common.FRJusticeEvents;
 import dev.tc4port.forgottenrelics.common.FRResearchCommand;
+import dev.tc4port.forgottenrelics.network.FRNetwork;
 import dev.tc4port.forgottenrelics.registry.FRCreativeTabs;
 import dev.tc4port.forgottenrelics.registry.FRItemState;
 import dev.tc4port.forgottenrelics.registry.FRItems;
@@ -41,6 +42,7 @@ public final class ForgottenRelics {
         FRRecipes.register(modBus);
         FRCreativeTabs.register(modBus);
 
+        FRNetwork.register();
         ForgottenKnowledge.init();
         MinecraftForge.EVENT_BUS.register(new FRJusticeEvents());
         MinecraftForge.EVENT_BUS.register(new FRResearchCommand());
