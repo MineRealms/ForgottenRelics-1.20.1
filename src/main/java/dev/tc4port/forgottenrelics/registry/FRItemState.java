@@ -55,12 +55,16 @@ public final class FRItemState {
     public static final ItemStateKey<Integer> XP_STORED = new ItemStateKey<>(
             ForgottenRelics.id("xp_stored"), Codec.INT);
 
+    /** Detected eldritch obelisk position for the Devourer of The Void. */
+    public static final ItemStateKey<net.minecraft.core.BlockPos> DETECTED_POS = new ItemStateKey<>(
+            ForgottenRelics.id("detected_pos"), net.minecraft.core.BlockPos.CODEC);
+
     private FRItemState() {
     }
 
     public static void register(Object bus) {
         ItemStatePlatform.register(bus, java.util.List.of(
                 SUPERSOLID, COOLDOWN, FATE_ID, STORED_DAMAGE, MODE, LIFETIME, SHINY_STONE,
-                ACTIVE, ABSORPTION, XP_STORED));
+                ACTIVE, ABSORPTION, XP_STORED, DETECTED_POS));
     }
 }

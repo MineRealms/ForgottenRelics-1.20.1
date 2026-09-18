@@ -17,6 +17,7 @@ import dev.tc4port.forgottenrelics.item.ItemFateTome;
 import dev.tc4port.forgottenrelics.item.ItemGhastlySkull;
 import dev.tc4port.forgottenrelics.item.ItemLunarFlares;
 import dev.tc4port.forgottenrelics.item.ItemMiningCharm;
+import dev.tc4port.forgottenrelics.item.ItemObeliskDrainer;
 import dev.tc4port.forgottenrelics.item.ItemMissileTome;
 import dev.tc4port.forgottenrelics.item.ItemOblivionAmulet;
 import dev.tc4port.forgottenrelics.item.ItemOblivionStone;
@@ -24,6 +25,7 @@ import dev.tc4port.forgottenrelics.item.ItemOmegaCore;
 import dev.tc4port.forgottenrelics.item.ItemParadox;
 import dev.tc4port.forgottenrelics.item.ItemShinyStone;
 import dev.tc4port.forgottenrelics.item.ItemSuperpositionRing;
+import dev.tc4port.forgottenrelics.item.ItemTeleportationTome;
 import dev.tc4port.forgottenrelics.item.ItemThunderpeal;
 import dev.tc4port.forgottenrelics.item.ItemWastelayer;
 import dev.tc4port.forgottenrelics.item.ItemWeatherStone;
@@ -124,6 +126,12 @@ public final class FRItems {
 
     public static final RegistryObject<Item> CHAOS_TOME =
             REGISTRY.register("chaos_tome", () -> new ItemChaosTome(new Item.Properties()));
+
+    public static final RegistryObject<Item> TELEPORTATION_TOME =
+            REGISTRY.register("teleportation_tome", () -> new ItemTeleportationTome(new Item.Properties()));
+
+    public static final RegistryObject<Item> OBELISK_DRAINER =
+            REGISTRY.register("obelisk_drainer", () -> new ItemObeliskDrainer(new Item.Properties()));
 
     private FRItems() {
     }
