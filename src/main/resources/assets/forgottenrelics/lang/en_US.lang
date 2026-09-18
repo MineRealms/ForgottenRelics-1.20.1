@@ -604,3 +604,21 @@ item.ItemOblivionStoneMode2.lore=§5Mode: §6Deduplicate §5stored items.
 item.ItemOblivionStoneMode3.lore=§5Mode: §6Emergency §5slot clearing.
 item.ItemOblivionStoneStored.lore=§5Stored entries:§6
 item.ItemOblivionStoneOverflow.lore=§5The stone is straining under its contents...
+
+### RESEARCH TITLES (PORT) ###
+tc.research_name.forgottenrelics:MiningCharm=Mining Charm
+tc.research_name.forgottenrelics:AdvancedMiningCharm=Ethereal Mining Charm
+tc.research_name.forgottenrelics:SuperpositionRing=Ring of Superposition
+tc.research_name.forgottenrelics:WeatherStone=Runic Stone
+tc.research_name.forgottenrelics:DarkSunRing=Ring of The Seven Suns
+tc.research_name.forgottenrelics:AncientAegis=Ancient Aegis
+tc.research_name.forgottenrelics:ChaosCore=Chaos Core
+tc.research_name.forgottenrelics:TheParadox=The Paradox
+tc.research_name.forgottenrelics:ChaosTome=Tome of The Primal Chaos
+tc.research_name.forgottenrelics:DimensionalMirror=Dimensional Mirror
+tc.research_name.forgottenrelics:XPTome=Tome of Ageless Wisdom
+tc.research_name.forgottenrelics:ShinyStone=Shiny Stone
+tc.research_name.forgottenrelics:NebulousCore=Nebulous Core
+tc.research_name.forgottenrelics:EldritchSpell=Eldritch Spell
+tc.research_category.forgottenrelics:relics=Forgotten Relics
+tc.research_category.forgottenrelics.relics=Forgotten Relics
