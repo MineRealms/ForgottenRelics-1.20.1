@@ -1,0 +1,6 @@
+{
+    "textures":  {
+                     "layer0":  "forgottenrelics:item/wastelayer"
+                 },
+    "parent":  "minecraft:item/handheld"
+}

@@ -1,0 +1,6 @@
+{
+    "textures":  {
+                     "layer0":  "forgottenrelics:item/mining_charm"
+                 },
+    "parent":  "minecraft:item/generated"
+}

@@ -1,0 +1,6 @@
+{
+    "textures":  {
+                     "layer0":  "forgottenrelics:item/fate_tome"
+                 },
+    "parent":  "minecraft:item/generated"
+}

@@ -1,0 +1,6 @@
+{
+    "textures":  {
+                     "layer0":  "forgottenrelics:item/superposition_ring"
+                 },
+    "parent":  "minecraft:item/generated"
+}

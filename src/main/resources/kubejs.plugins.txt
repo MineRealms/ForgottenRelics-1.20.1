@@ -1,0 +1,1 @@
+dev.tc4port.forgottenrelics.compat.kubejs.ForgottenRelicsKubeJSPlugin

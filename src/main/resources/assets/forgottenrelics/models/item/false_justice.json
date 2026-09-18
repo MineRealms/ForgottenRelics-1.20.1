@@ -1,0 +1,6 @@
+{
+    "textures":  {
+                     "layer0":  "forgottenrelics:item/false_justice"
+                 },
+    "parent":  "minecraft:item/generated"
+}

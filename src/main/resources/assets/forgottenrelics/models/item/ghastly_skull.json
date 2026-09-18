@@ -1,0 +1,6 @@
+{
+    "textures":  {
+                     "layer0":  "forgottenrelics:item/ghastly_skull"
+                 },
+    "parent":  "minecraft:item/generated"
+}

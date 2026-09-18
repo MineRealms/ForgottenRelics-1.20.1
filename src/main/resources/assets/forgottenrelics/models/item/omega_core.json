@@ -1,0 +1,6 @@
+{
+    "textures":  {
+                     "layer0":  "forgottenrelics:item/omega_core"
+                 },
+    "parent":  "minecraft:item/generated"
+}

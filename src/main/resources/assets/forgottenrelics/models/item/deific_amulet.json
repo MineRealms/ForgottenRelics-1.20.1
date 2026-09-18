@@ -1,0 +1,6 @@
+{
+    "textures":  {
+                     "layer0":  "forgottenrelics:item/deific_amulet"
+                 },
+    "parent":  "minecraft:item/generated"
+}

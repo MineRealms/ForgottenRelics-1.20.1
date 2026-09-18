@@ -1,0 +1,6 @@
+{
+    "textures":  {
+                     "layer0":  "forgottenrelics:item/oblivion_amulet"
+                 },
+    "parent":  "minecraft:item/generated"
+}
