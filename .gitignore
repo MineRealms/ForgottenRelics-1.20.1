@@ -30,3 +30,5 @@ build-output.txt
 
 # Local third-party dev jars (not redistributable); see local-repo/README.md
 local-repo/**/*.jar
+run-client.log
+run/
