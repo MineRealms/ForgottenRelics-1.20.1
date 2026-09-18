@@ -1,6 +1,8 @@
 package dev.tc4port.forgottenrelics.registry;
 
 import dev.tc4port.forgottenrelics.ForgottenRelics;
+import dev.tc4port.forgottenrelics.entity.EntityCrimsonOrb;
+import dev.tc4port.forgottenrelics.entity.EntityDarkMatterOrb;
 import dev.tc4port.forgottenrelics.entity.EntityShinyEnergy;
 import dev.tc4port.forgottenrelics.entity.EntitySoulEnergy;
 import net.minecraft.world.entity.EntityType;
@@ -34,6 +36,22 @@ public final class FREntities {
                     .clientTrackingRange(6)
                     .updateInterval(10)
                     .build(ForgottenRelics.id("soul_energy").toString()));
+
+    public static final RegistryObject<EntityType<EntityDarkMatterOrb>> DARK_MATTER_ORB =
+            REGISTRY.register("dark_matter_orb", () -> EntityType.Builder
+                    .<EntityDarkMatterOrb>of(EntityDarkMatterOrb::new, MobCategory.MISC)
+                    .sized(0.35F, 0.35F)
+                    .clientTrackingRange(8)
+                    .updateInterval(2)
+                    .build(ForgottenRelics.id("dark_matter_orb").toString()));
+
+    public static final RegistryObject<EntityType<EntityCrimsonOrb>> CRIMSON_ORB =
+            REGISTRY.register("crimson_orb", () -> EntityType.Builder
+                    .<EntityCrimsonOrb>of(EntityCrimsonOrb::new, MobCategory.MISC)
+                    .sized(0.3F, 0.3F)
+                    .clientTrackingRange(8)
+                    .updateInterval(2)
+                    .build(ForgottenRelics.id("crimson_orb").toString()));
 
     private FREntities() {
     }
