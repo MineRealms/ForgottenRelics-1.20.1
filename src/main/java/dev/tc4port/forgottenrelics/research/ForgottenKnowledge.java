@@ -56,7 +56,7 @@ public final class ForgottenKnowledge {
         seed("forgottenrelics:ChaosTome", "botania:gaia_ingot");
         seed("forgottenrelics:NuclearFury", "botania:missile_rod", "botania:terrasteel_ingot", "thaumcraft:alumentum");
         seed("forgottenrelics:SoulTome", "botania:gaia_ingot", "thaumcraft:alumentum", "minecraft:ender_eye");
-        seed("forgottenrelics:LunarFlares", "botania:terrasteel_ingot", "botania:ender_air");
+        seed("forgottenrelics:LunarFlares", "botania:terrasteel_ingot", "botania:ender_air_bottle");
         seed("forgottenrelics:ChaosCore", "botania:pixie_dust", "botania:dragonstone", "thaumcraft:void_ingot");
         seed("forgottenrelics:TheParadox", "forgottenrelics:chaos_core");
         seed("forgottenrelics:DarkSunRing", "minecraft:blaze_rod", "botania:gaia_ingot");
