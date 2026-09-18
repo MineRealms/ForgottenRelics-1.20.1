@@ -1,26 +1,23 @@
 package dev.tc4port.forgottenrelics.client;
 
-import com.mojang.blaze3d.vertex.PoseStack;
+import dev.tc4port.forgottenrelics.client.fx.FRFx;
 import dev.tc4port.forgottenrelics.network.EffectPayload;
 import dev.tc4port.forgottenrelics.network.LightningPayload;
 import dev.tc4port.forgottenrelics.network.NotificationPayload;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.network.chat.Component;
-import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3f;
 
 /**
- * Client-side effect rendering. Maps the consolidated {@link EffectPayload}
- * onto vanilla particle primitives; this replaces the source mod's Botania
- * {@code wispFX} calls and its dedicated FX classes.
+ * Client-side effect rendering. Uses the ported Botania wisp/sparkle particles
+ * (see {@link FRFx}), which is what the source mod's effect packets ended up
+ * spawning on the 1.7.10 client.
  */
 @OnlyIn(Dist.CLIENT)
 public final class FRClientEffects {
@@ -51,51 +48,121 @@ public final class FRClientEffects {
             case PORTAL_TRACE -> {
                 for (int i = 0; i < count; i++) {
                     double t = i / (double) count;
-                    double px = message.x() + (message.targetX() - message.x()) * t + (Math.random() - 0.5D) * scale;
-                    double py = message.y() + (message.targetY() - message.y()) * t + (Math.random() - 0.5D) * scale;
-                    double pz = message.z() + (message.targetZ() - message.z()) * t + (Math.random() - 0.5D) * scale;
-                    level.addParticle(ParticleTypes.PORTAL, px, py, pz, 0.0D, 0.0D, 0.0D);
+                    double px = message.x() + (message.targetX() - message.x()) * t;
+                    double py = message.y() + (message.targetY() - message.y()) * t;
+                    double pz = message.z() + (message.targetZ() - message.z()) * t;
+                    FRFx.sparkle(level, px + jitter(scale), py + jitter(scale), pz + jitter(scale), 0.6F, 0.9F, 1.0F, 1.6F, 6);
+                    FRFx.wisp(level, px + jitter(scale), py + jitter(scale), pz + jitter(scale), 0.5F, 0.7F, 1.0F, 0.5F,
+                            0.0D, 0.0D, 0.0D, 1.0F);
                 }
             }
-            case BURST, LUNAR_BURST -> burst(level, message, ParticleTypes.CRIT, ParticleTypes.END_ROD, count);
-            case APOTHEOSIS -> burst(level, message, ParticleTypes.END_ROD, ParticleTypes.FLASH, count / 2 + 1);
-            case LUNAR_FLARES -> burst(level, message, ParticleTypes.SOUL_FIRE_FLAME, ParticleTypes.END_ROD, count);
-            case INFERNAL -> burst(level, message, ParticleTypes.SOUL_FIRE_FLAME, ParticleTypes.SMOKE, count);
-            case VOID -> burst(level, message, ParticleTypes.SCULK_SOUL, ParticleTypes.PORTAL, count);
-            case TELEKINESIS -> burst(level, message, ParticleTypes.ELECTRIC_SPARK, ParticleTypes.ENCHANT, count);
+            case BURST -> {
+                for (int i = 0; i < count / 2 + 4; i++) {
+                    FRFx.sparkleMoving(level,
+                            message.x() + jitter(scale * 0.6D), message.y() + jitter(scale * 0.6D), message.z() + jitter(scale * 0.6D),
+                            jitter(0.3D), jitter(0.3D), jitter(0.3D),
+                            0.9F, 0.9F, 1.0F, 2.0F, 4);
+                }
+                for (int i = 0; i < count / 2; i++) {
+                    FRFx.wisp(level, message.x() + jitter(scale), message.y() + jitter(scale), message.z() + jitter(scale),
+                            0.8F, 0.8F, 1.0F, 0.6F, jitter(0.05D), jitter(0.05D), jitter(0.05D), 1.0F);
+                }
+            }
+            case APOTHEOSIS -> {
+                for (int i = 0; i < count; i++) {
+                    FRFx.sparkle(level, message.x() + jitter(scale), message.y() + jitter(scale), message.z() + jitter(scale),
+                            1.0F, 0.85F, 0.3F, 2.4F, 5);
+                }
+                for (int i = 0; i < count / 2; i++) {
+                    FRFx.wisp(level, message.x() + jitter(scale), message.y() + jitter(scale), message.z() + jitter(scale),
+                            1.0F, 0.9F, 0.4F, 0.8F, jitter(0.08D), jitter(0.08D), jitter(0.08D), 1.0F);
+                }
+            }
+            case LUNAR_BURST -> {
+                for (int i = 0; i < count; i++) {
+                    FRFx.sparkleMoving(level,
+                            message.x() + jitter(scale), message.y() + jitter(scale), message.z() + jitter(scale),
+                            jitter(0.2D), jitter(0.2D), jitter(0.2D),
+                            0.75F, 0.9F, 1.0F, 2.2F, 4);
+                }
+            }
+            case LUNAR_FLARES -> {
+                for (int i = 0; i < count; i++) {
+                    FRFx.sparkle(level, message.x() + jitter(scale * 1.5D), message.y() + jitter(scale * 1.5D), message.z() + jitter(scale * 1.5D),
+                            0.65F, 0.85F, 1.0F, 1.8F, 5);
+                }
+                for (int i = 0; i < count / 3; i++) {
+                    FRFx.wisp(level, message.x() + jitter(scale * 1.5D), message.y() + jitter(scale * 1.5D), message.z() + jitter(scale * 1.5D),
+                            0.7F, 0.9F, 1.0F, 0.7F, jitter(0.06D), jitter(0.06D), jitter(0.06D), 1.2F);
+                }
+            }
+            case INFERNAL -> {
+                for (int i = 0; i < count / 2; i++) {
+                    FRFx.wisp(level, message.x() + jitter(2.0D), message.y() + jitter(2.0D), message.z() + jitter(2.0D),
+                            0.9F, 0.25F, 0.1F, 0.8F, jitter(0.1D), 0.05D, jitter(0.1D), 1.0F);
+                }
+                for (int i = 0; i < count / 2; i++) {
+                    FRFx.sparkle(level, message.x() + jitter(1.5D), message.y() + jitter(1.5D), message.z() + jitter(1.5D),
+                            1.0F, 0.4F, 0.1F, 2.0F, 4);
+                }
+            }
+            case VOID -> {
+                for (int i = 0; i < count; i++) {
+                    FRFx.wispTo(level,
+                            message.x() + jitter(3.0D), message.y() + jitter(3.0D), message.z() + jitter(3.0D),
+                            message.x(), message.y(), message.z(),
+                            0.45F, 0.1F, 0.7F, 0.7F);
+                }
+            }
+            case TELEKINESIS -> {
+                for (int i = 0; i < count; i++) {
+                    FRFx.sparkle(level, message.x() + jitter(1.0D), message.y() + jitter(1.0D), message.z() + jitter(1.0D),
+                            0.35F, 0.9F, 0.9F, 1.8F, 4);
+                }
+            }
             case BANISHMENT -> {
-                ParticleOptions dust = new DustParticleOptions(colorVector(message.color(), 0.9F, 0.1F, 0.0F), scale);
                 for (int i = 0; i < count; i++) {
-                    double px = message.x() + (Math.random() - 0.5D) * 8.0D;
-                    double py = message.y() + (Math.random() - 0.5D) * 8.0D;
-                    double pz = message.z() + (Math.random() - 0.5D) * 8.0D;
+                    double px = message.x() + jitter(4.0D);
+                    double py = message.y() + jitter(4.0D);
+                    double pz = message.z() + jitter(4.0D);
                     Vec3 pull = new Vec3(message.x() - px, message.y() - py, message.z() - pz).scale(0.08D);
-                    level.addParticle(dust, px, py, pz, pull.x, pull.y, pull.z);
+                    FRFx.wisp(level, px, py, pz, 0.9F, 0.12F, 0.02F, 0.7F,
+                            pull.x, pull.y, pull.z, 1.0F);
                 }
             }
-            case GUARDIAN_VANISH -> burst(level, message, ParticleTypes.END_ROD, ParticleTypes.CLOUD, count);
-            case SHINY -> burst(level, message, ParticleTypes.ELECTRIC_SPARK, ParticleTypes.END_ROD, count);
-            case SPARKLE -> {
-                ParticleOptions dust = new DustParticleOptions(colorVector(message.color(), 0.5F, 0.8F, 1.0F), scale);
+            case GUARDIAN_VANISH -> {
                 for (int i = 0; i < count; i++) {
-                    level.addParticle(dust,
-                            message.x() + (Math.random() - 0.5D) * scale,
-                            message.y() + (Math.random() - 0.5D) * scale,
-                            message.z() + (Math.random() - 0.5D) * scale,
-                            0.0D, 0.02D, 0.0D);
+                    FRFx.sparkle(level, message.x() + jitter(2.0D), message.y() + jitter(2.0D), message.z() + jitter(2.0D),
+                            0.95F, 0.85F, 1.0F, 2.6F, 6);
                 }
             }
-        }
-    }
-
-    private static void burst(ClientLevel level, EffectPayload message, ParticleOptions primary, ParticleOptions secondary, int count) {
-        for (int i = 0; i < count; i++) {
-            double vx = (Math.random() - 0.5D) * 0.3D;
-            double vy = (Math.random() - 0.5D) * 0.3D;
-            double vz = (Math.random() - 0.5D) * 0.3D;
-            level.addParticle(primary, message.x(), message.y(), message.z(), vx, vy, vz);
-            if (secondary != null) {
-                level.addParticle(secondary, message.x(), message.y(), message.z(), vx * 0.5D, vy * 0.5D, vz * 0.5D);
+            case SHINY -> {
+                for (int i = 0; i < count; i++) {
+                    FRFx.sparkle(level, message.x() + jitter(1.0D), message.y() + jitter(1.0D), message.z() + jitter(1.0D),
+                            0.9F, 0.95F, 1.0F, 1.8F, 3);
+                }
+                for (int i = 0; i < count / 3; i++) {
+                    FRFx.wisp(level, message.x() + jitter(1.0D), message.y() + jitter(1.0D), message.z() + jitter(1.0D),
+                            0.8F, 0.9F, 1.0F, 0.5F, jitter(0.03D), jitter(0.03D), jitter(0.03D), 1.0F);
+                }
+            }
+            case SPARKLE -> {
+                float red = ((message.color() >> 16) & 0xFF) / 255.0F;
+                float green = ((message.color() >> 8) & 0xFF) / 255.0F;
+                float blue = (message.color() & 0xFF) / 255.0F;
+                if (message.color() == 0) {
+                    red = 0.75F;
+                    green = 0.85F;
+                    blue = 1.0F;
+                }
+                for (int i = 0; i < count; i++) {
+                    FRFx.sparkle(level, message.x() + jitter(scale), message.y() + jitter(scale), message.z() + jitter(scale),
+                            red, green, blue, 2.0F, 5);
+                }
+                for (int i = 0; i < count / 2; i++) {
+                    FRFx.wisp(level, message.x() + jitter(scale), message.y() + jitter(scale), message.z() + jitter(scale),
+                            red, green, blue, 0.6F, jitter(0.06D), jitter(0.06D), jitter(0.06D), 1.0F);
+                }
             }
         }
     }
@@ -124,17 +191,7 @@ public final class FRClientEffects {
                 0.8F + (float) Math.random() * 0.2F, false);
     }
 
-    private static Vector3f colorVector(int color, float fallbackR, float fallbackG, float fallbackB) {
-        if (color == 0) {
-            return new Vector3f(fallbackR, fallbackG, fallbackB);
-        }
-        return new Vector3f(
-                ((color >> 16) & 0xFF) / 255.0F,
-                ((color >> 8) & 0xFF) / 255.0F,
-                (color & 0xFF) / 255.0F);
-    }
-
-    @SuppressWarnings("unused")
-    private static void unused(PoseStack stack) {
+    private static double jitter(double scale) {
+        return (Math.random() - 0.5D) * 2.0D * scale;
     }
 }
