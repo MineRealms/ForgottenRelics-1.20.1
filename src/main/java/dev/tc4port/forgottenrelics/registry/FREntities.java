@@ -5,8 +5,10 @@ import dev.tc4port.forgottenrelics.entity.EntityChaoticOrb;
 import dev.tc4port.forgottenrelics.entity.EntityCrimsonOrb;
 import dev.tc4port.forgottenrelics.entity.EntityDarkMatterOrb;
 import dev.tc4port.forgottenrelics.entity.EntityLunarFlare;
+import dev.tc4port.forgottenrelics.entity.EntityRageousMissile;
 import dev.tc4port.forgottenrelics.entity.EntityShinyEnergy;
 import dev.tc4port.forgottenrelics.entity.EntitySoulEnergy;
+import dev.tc4port.forgottenrelics.entity.EntityThunderpealOrb;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -70,6 +72,22 @@ public final class FREntities {
                     .clientTrackingRange(10)
                     .updateInterval(2)
                     .build(ForgottenRelics.id("lunar_flare").toString()));
+
+    public static final RegistryObject<EntityType<EntityRageousMissile>> RAGEOUS_MISSILE =
+            REGISTRY.register("rageous_missile", () -> EntityType.Builder
+                    .<EntityRageousMissile>of(EntityRageousMissile::new, MobCategory.MISC)
+                    .sized(0.2F, 0.2F)
+                    .clientTrackingRange(10)
+                    .updateInterval(2)
+                    .build(ForgottenRelics.id("rageous_missile").toString()));
+
+    public static final RegistryObject<EntityType<EntityThunderpealOrb>> THUNDERPEAL_ORB =
+            REGISTRY.register("thunderpeal_orb", () -> EntityType.Builder
+                    .<EntityThunderpealOrb>of(EntityThunderpealOrb::new, MobCategory.MISC)
+                    .sized(0.3F, 0.3F)
+                    .clientTrackingRange(8)
+                    .updateInterval(2)
+                    .build(ForgottenRelics.id("thunderpeal_orb").toString()));
 
     private FREntities() {
     }
