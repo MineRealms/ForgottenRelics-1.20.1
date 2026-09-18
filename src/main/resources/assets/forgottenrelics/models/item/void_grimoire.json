@@ -1,0 +1,6 @@
+{
+    "textures":  {
+                     "layer0":  "forgottenrelics:item/void_grimoire"
+                 },
+    "parent":  "minecraft:item/generated"
+}

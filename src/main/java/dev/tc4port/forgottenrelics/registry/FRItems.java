@@ -25,10 +25,12 @@ import dev.tc4port.forgottenrelics.item.ItemOblivionStone;
 import dev.tc4port.forgottenrelics.item.ItemOmegaCore;
 import dev.tc4port.forgottenrelics.item.ItemParadox;
 import dev.tc4port.forgottenrelics.item.ItemShinyStone;
+import dev.tc4port.forgottenrelics.item.ItemSoulTome;
 import dev.tc4port.forgottenrelics.item.ItemSuperpositionRing;
 import dev.tc4port.forgottenrelics.item.ItemTeleportationTome;
 import dev.tc4port.forgottenrelics.item.ItemTerrorCrown;
 import dev.tc4port.forgottenrelics.item.ItemThunderpeal;
+import dev.tc4port.forgottenrelics.item.ItemVoidGrimoire;
 import dev.tc4port.forgottenrelics.item.ItemWastelayer;
 import dev.tc4port.forgottenrelics.item.ItemWeatherStone;
 import dev.tc4port.forgottenrelics.item.ItemXPTome;
@@ -140,6 +142,12 @@ public final class FRItems {
 
     public static final RegistryObject<Item> DIMENSIONAL_MIRROR =
             REGISTRY.register("dimensional_mirror", () -> new ItemDimensionalMirror(new Item.Properties()));
+
+    public static final RegistryObject<Item> SOUL_TOME =
+            REGISTRY.register("soul_tome", () -> new ItemSoulTome(new Item.Properties()));
+
+    public static final RegistryObject<Item> VOID_GRIMOIRE =
+            REGISTRY.register("void_grimoire", () -> new ItemVoidGrimoire(new Item.Properties()));
 
     private FRItems() {
     }
