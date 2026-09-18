@@ -31,6 +31,18 @@ public class ItemFateTome extends RelicItem implements ForgottenGear.Warping {
         return (int) (10000 * FRConfig.fateTomeVisMult());
     }
 
+    /** Six-channel cost charged when the tome refuses a lethal blow. */
+    public static dev.tc4port.thaumcraft.api.aspect.VisCost deathPreventionCost() {
+        int cost = (int) (10000 * FRConfig.fateTomeVisMult());
+        return dev.tc4port.thaumcraft.api.aspect.VisCost.ofCentivis(java.util.Map.of(
+                dev.tc4port.thaumcraft.api.aspect.VisChannel.AER, cost,
+                dev.tc4port.thaumcraft.api.aspect.VisChannel.TERRA, cost,
+                dev.tc4port.thaumcraft.api.aspect.VisChannel.IGNIS, cost,
+                dev.tc4port.thaumcraft.api.aspect.VisChannel.AQUA, cost,
+                dev.tc4port.thaumcraft.api.aspect.VisChannel.ORDO, cost,
+                dev.tc4port.thaumcraft.api.aspect.VisChannel.PERDITIO, cost));
+    }
+
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
         if (level.isClientSide() || !(entity instanceof Player)) {

@@ -46,6 +46,7 @@ public final class ForgottenRelics {
         ForgottenKnowledge.init();
         MinecraftForge.EVENT_BUS.register(new FRJusticeEvents());
         MinecraftForge.EVENT_BUS.register(new FRResearchCommand());
+        MinecraftForge.EVENT_BUS.register(new dev.tc4port.forgottenrelics.common.FRGameplayEvents());
     }
 
     /** Kept for parity with the source-side package separations. */

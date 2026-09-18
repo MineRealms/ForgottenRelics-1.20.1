@@ -19,11 +19,13 @@ import net.minecraft.world.level.Level;
 public final class FRDamageTypes {
 
     public static final ResourceKey<DamageType> TRUE_DAMAGE = key("true_damage");
+    public static final ResourceKey<DamageType> TRUE_DAMAGE_UNDEFINED = key("true_damage_undefined");
     public static final ResourceKey<DamageType> OBLIVION = key("oblivion");
     public static final ResourceKey<DamageType> FATE = key("fate");
     public static final ResourceKey<DamageType> FORGOTTEN_LIGHTNING = key("forgotten_lightning");
     public static final ResourceKey<DamageType> DARK_MATTER = key("dark_matter");
     public static final ResourceKey<DamageType> FORGOTTEN_MAGIC = key("forgotten_magic");
+    public static final ResourceKey<DamageType> SUPERPOSITION = key("superposition");
 
     private FRDamageTypes() {
     }
