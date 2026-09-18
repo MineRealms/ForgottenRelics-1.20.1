@@ -5,6 +5,7 @@ import dev.tc4port.forgottenrelics.item.ItemAdvancedMiningCharm;
 import dev.tc4port.forgottenrelics.item.ItemAncientAegis;
 import dev.tc4port.forgottenrelics.item.ItemArcanum;
 import dev.tc4port.forgottenrelics.item.ItemChaosCore;
+import dev.tc4port.forgottenrelics.item.ItemCrimsonSpell;
 import dev.tc4port.forgottenrelics.item.ItemDarkSunRing;
 import dev.tc4port.forgottenrelics.item.ItemDeificAmulet;
 import dev.tc4port.forgottenrelics.item.ItemDiscordRing;
@@ -13,12 +14,14 @@ import dev.tc4port.forgottenrelics.item.ItemFalseJustice;
 import dev.tc4port.forgottenrelics.item.ItemFateTome;
 import dev.tc4port.forgottenrelics.item.ItemGhastlySkull;
 import dev.tc4port.forgottenrelics.item.ItemMiningCharm;
+import dev.tc4port.forgottenrelics.item.ItemMissileTome;
 import dev.tc4port.forgottenrelics.item.ItemOblivionAmulet;
 import dev.tc4port.forgottenrelics.item.ItemOblivionStone;
 import dev.tc4port.forgottenrelics.item.ItemOmegaCore;
 import dev.tc4port.forgottenrelics.item.ItemParadox;
 import dev.tc4port.forgottenrelics.item.ItemShinyStone;
 import dev.tc4port.forgottenrelics.item.ItemSuperpositionRing;
+import dev.tc4port.forgottenrelics.item.ItemThunderpeal;
 import dev.tc4port.forgottenrelics.item.ItemWastelayer;
 import dev.tc4port.forgottenrelics.item.ItemWeatherStone;
 import dev.tc4port.forgottenrelics.item.ItemXPTome;
@@ -100,6 +103,15 @@ public final class FRItems {
 
     public static final RegistryObject<Item> WEATHER_STONE =
             REGISTRY.register("weather_stone", () -> new ItemWeatherStone(new Item.Properties()));
+
+    public static final RegistryObject<Item> MISSILE_TOME =
+            REGISTRY.register("missile_tome", () -> new ItemMissileTome(new Item.Properties()));
+
+    public static final RegistryObject<Item> THUNDERPEAL =
+            REGISTRY.register("thunderpeal", () -> new ItemThunderpeal(new Item.Properties()));
+
+    public static final RegistryObject<Item> CRIMSON_SPELL =
+            REGISTRY.register("crimson_spell", () -> new ItemCrimsonSpell(new Item.Properties()));
 
     private FRItems() {
     }
